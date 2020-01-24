@@ -7,6 +7,7 @@ https://vinod.co/
 vinod@vinod.co
 
 """
+from json import dump
 
 AUTHOR_NAME = 'Vinod Kumar K'
 AUTHOR_EMAIL = 'vinod@vinod.co'
@@ -52,3 +53,44 @@ def fibo(num = 10):
         a, b = b, c
         i += 1
         
+
+# def csv2json(filename = None):
+#     if filename==None:
+#         filename = input('Enter the CSV filename to read from: ')
+#     try:
+#         with open(filename) as f:
+#             header = f.readline().strip().split(',')
+#             list = []
+#             for line in f:
+#                 values = line.strip().split(',')
+#                 data = dict(zip(header, values))
+#                 list.append(data)
+#             with open(filename[:-3]+'json', 'wt') as outfile:
+#                 dump(list, outfile, indent=3)
+#                 print('json file generated')
+#     except Exception as e:
+#         print(f'There was an error: {e}')
+
+def csv2json(filename = None):
+    if filename==None:
+        filename = input('Enter the CSV filename to read from: ')
+    try:
+        with open(filename) as f:
+            header = f.readline().strip().split(',')
+            list = [ 
+                dict(zip(header, line.strip().split(',')))
+                for line in f 
+            ]
+            
+            with open(filename[:-3]+'json', 'wt') as outfile:
+                dump(list, outfile, indent=3)
+                print('json file generated')
+    except Exception as e:
+        print(f'There was an error: {e}')
+    finally:
+        print('It\'s done!')
+
+def main():
+    csv2json('people.csv')
+
+if __name__=='__main__': main()

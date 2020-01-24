@@ -1,4 +1,5 @@
-# Advanced Python @ ABB
+# Advanced Python 
+## at ABB
 
 Duration: 2 days
 <br>

@@ -1,0 +1,22 @@
+<h3>Here is the people data</h3>
+
+<!-- table.table.table-bordered.table-striped -->
+<table class="table table-bordered table-striped">
+    <!-- thead>tr>td*4 -->
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Name</td>
+            <td>Email address</td>
+        </tr>
+    </thead>
+    <tbody>
+        % for d in data:
+        <tr>
+            <td>{{ d[0] }}</td>
+            <td>{{ 'Mr.' if d[2]=='Male' else 'Ms.' }} {{ d[1] }}</td>
+            <td>{{ d[3] }}</td>
+        </tr>
+        % end 
+    </tbody>
+</table>
